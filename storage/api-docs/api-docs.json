@@ -1,0 +1,499 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L2W Assignment App OpenApi API Documentation",
+        "description": "L2W Assignment App Using L5 Swagger OpenApi description",
+        "contact": {
+            "email": "schneidershades@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/quiz/answer": {
+            "post": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Start a new Quiz",
+                "description": "Returns a newly registered user data",
+                "operationId": "answer",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuizAnswerCreateFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful signup",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/quiz/question": {
+            "post": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Start a new Quiz",
+                "description": "Returns a newly registered user data",
+                "operationId": "question",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuizCreateFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful signup",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/quiz/start": {
+            "post": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Start a new Quiz",
+                "description": "Returns a newly registered user data",
+                "operationId": "session",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuizSessionCreateFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful signup",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/class": {
+            "get": {
+                "tags": [
+                    "Schedule"
+                ],
+                "summary": "List of class schedules",
+                "description": "List of class schedules",
+                "operationId": "userProfile",
+                "responses": {
+                    "200": {
+                        "description": "Successful signin",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/user/register": {
+            "post": {
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Sign Up a new user",
+                "description": "Returns a newly registered user data",
+                "operationId": "register",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegistrationFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful signup",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/login": {
+            "post": {
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Sign In a registered user",
+                "description": "Returns a newly registered user data",
+                "operationId": "signIn",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLoginFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful signin",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/profile": {
+            "get": {
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Profile of a registered user",
+                "description": "Profile of a registered user",
+                "operationId": "userProfile",
+                "responses": {
+                    "200": {
+                        "description": "Successful signin",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Profile of a registered user",
+                "description": "Profile of a registered user",
+                "operationId": "updateUserProfile",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserUpdateFormRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful signin",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/user/logout": {
+            "post": {
+                "tags": [
+                    "authentication"
+                ],
+                "summary": "Logout a registered user",
+                "description": "Logout a registered user",
+                "operationId": "userLogout",
+                "responses": {
+                    "200": {
+                        "description": "Successful signin",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "QuizAnswerCreateFormRequest": {
+                "title": "Quiz Answer Create Form Request Fields",
+                "description": "Quiz Answer Create Form request body data",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "quiz_id": {
+                        "title": "Quiz Id",
+                        "description": "Id of the Quiz",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "multiple_choice_id": {
+                        "title": "Multiple Choice Id",
+                        "description": "Id of the Multiple Choice",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "quiz_session_id": {
+                        "title": "Quiz Session ID",
+                        "description": "ID Quiz Session",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "QuizCreateFormRequest": {
+                "title": "Quiz Create Form Request Fields",
+                "description": "Quiz Create Form request body data",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "class_schedule_id": {
+                        "title": "Class Schedule ID",
+                        "description": "ID Class Schedule",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "quiz_session_id": {
+                        "title": "Quiz Session ID",
+                        "description": "ID Quiz Session",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "QuizSessionCreateFormRequest": {
+                "title": "Quiz Session Create Form Request Fields",
+                "description": "Quiz Session Create request body data",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "class_schedule_id": {
+                        "title": "Class Schedule ID",
+                        "description": "ID Class Schedule",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "UserLoginFormRequest": {
+                "title": "Sign in Form Request Fields",
+                "description": "sign in request body data",
+                "required": [
+                    "email"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "User email",
+                        "description": "Email of the user",
+                        "type": "string",
+                        "example": "info@hdp.com"
+                    },
+                    "password": {
+                        "title": "User password",
+                        "description": "Password of the user",
+                        "type": "string",
+                        "example": "password"
+                    }
+                },
+                "type": "object"
+            },
+            "UserRegistrationFormRequest": {
+                "title": "Sign Up Form Request Fields",
+                "description": "sign up request body data",
+                "required": [
+                    "first_name"
+                ],
+                "properties": {
+                    "first_name": {
+                        "title": "User First Name",
+                        "description": "First name of the user",
+                        "type": "string",
+                        "example": "Schneider"
+                    },
+                    "other_name": {
+                        "title": "User Other Name",
+                        "description": "Other name of the user",
+                        "type": "string",
+                        "example": "Komolafe"
+                    },
+                    "last_name": {
+                        "title": "User Last Name",
+                        "description": "Last name of the user",
+                        "type": "string",
+                        "example": "Busayo"
+                    },
+                    "type": {
+                        "title": "User Type",
+                        "description": "Student/Instructor",
+                        "type": "string",
+                        "example": "Student/Instructor"
+                    },
+                    "email": {
+                        "title": "User email",
+                        "description": "Email of the user",
+                        "type": "string",
+                        "example": "admin@admin.com"
+                    },
+                    "password": {
+                        "title": "User password",
+                        "description": "Password of the user",
+                        "type": "string",
+                        "example": "password"
+                    }
+                },
+                "type": "object"
+            },
+            "UserUpdateFormRequest": {
+                "title": "User Update Form Request Fields",
+                "description": "User Update request body data",
+                "required": [
+                    "first_name"
+                ],
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "L2W Assignment Application",
+            "description": "API Endpoints of Projects"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
