@@ -83,17 +83,17 @@ class QuizController extends Controller
     		$result[] = $this->fillArray($r['id'], $r['attempts']);
 		}
 
-        $noDuplicates = array_unique($result);
+        // $noDuplicates = array_unique($result);
 
-        $duplicates = array_diff($result, $noDuplicates);
+        // $duplicates = array_diff($result, $noDuplicates);
 
 		$ns = array_reduce($result, 'array_merge', array());
 
 		$random = $ns[mt_rand(0, count($ns) - 1)];
 
-		$quiz = Quiz::where('id', $random)->get();
+		$quiz = Quiz::where('id', $random)->first();
 
-		return $this->showAll($quiz);
+		return $this->showOne($quiz);
     }
 
     public function fillArray($value, $len) {

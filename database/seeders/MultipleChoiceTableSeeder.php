@@ -16,61 +16,61 @@ class MultipleChoiceTableSeeder extends Seeder
     {
         $class = MultipleChoice::create([
         	'quiz_id' => 1,
-        	'option' => 'True',
+        	'option' => 'true',
         	'correct' => false,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 1,
-        	'option' => 'False',
+        	'option' => 'false',
         	'correct' => true,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 2,
-        	'option' => 'True',
+        	'option' => 'true',
         	'correct' => false,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 2,
-        	'option' => 'False',
+        	'option' => 'false',
         	'correct' => true,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 3,
-        	'option' => 'True',
+        	'option' => 'true',
         	'correct' => false,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 3,
-        	'option' => 'False',
+        	'option' => 'false',
         	'correct' => true,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 4,
-        	'option' => 'True',
+        	'option' => 'true',
         	'correct' => false,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 4,
-        	'option' => 'False',
+        	'option' => 'false',
         	'correct' => true,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 5,
-        	'option' => 'True',
+        	'option' => 'true',
         	'correct' => false,
         ]);
 
         $class = MultipleChoice::create([
         	'quiz_id' => 5,
-        	'option' => 'False',
+        	'option' => 'false',
         	'correct' => true,
         ]);
     }
