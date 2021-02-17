@@ -27,8 +27,8 @@ class PermissionSeeder extends Seeder
         if ($this->command->confirm('Create Roles for user, default is admin and user? [y|N]', true)) {
 
             // Ask for roles from input
-            $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Super Admin,Student,Instructor');
- 
+            $input_roles = $this->command->ask('Enter roles in comma separate format.', 'Admin,Student,Instructor');
+
             // Explode roles
             $roles_array = explode(',', $input_roles);
 
@@ -43,14 +43,16 @@ class PermissionSeeder extends Seeder
                 }
 
                 if($role->name == 'Student'){
-                    $role->syncPermissions(Permission::where('name', 'access_allAccounts')->first());
+                    $role->givePermissionTo(['take_quiz']);
                     $this->command->info('Student granted permissions');
                 }
 
                 if($role->name == 'Instructor'){
-                    $role->givePermissionTo(['create_discounts', 'edit_orders', 'delete_orders']);
+                    $role->givePermissionTo(['show_quiz', 'edit_quiz', 'create_quiz', 'show_quizScore']);
                     $this->command->info('Instructor granted permissions');
                 }
+                // create one user for each role
+                $this->createUser($role);
             }
 
             $this->command->info('Roles ' . $input_roles . ' added successfully');
@@ -60,5 +62,14 @@ class PermissionSeeder extends Seeder
             $this->command->info('Added only default user role.');
         }
     }
-    
+    private function createUser($role)
+    {
+        if( $role->name == 'Super Admin') {
+            $super = User::where('email', 'buskoms@yahoo.com')->first();
+            $super->assignRole($role->name);
+            $this->command->info('Here is your admin details to login:');
+            $this->command->warn($super->email);
+            $this->command->warn('Password is "password"');
+        }
+    }
 }

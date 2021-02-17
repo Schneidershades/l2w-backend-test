@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Api\Quiz;
 
+use App\Services\QuizSessionService;
 use App\Http\Controllers\Controller;
-use App\Models\QuizSession;
 use App\Http\Requests\Quiz\QuizSessionCreateFormRequest;
 
 class QuizSessionController extends Controller
 {
+    private $service;
+
+    public function __construct(QuizSessionService $service)
+    {
+        $this->service = $service;
+    }
 	 /**
      * @OA\Post(
      *      path="/api/v1/quiz/start",
@@ -40,26 +46,8 @@ class QuizSessionController extends Controller
      *      ),
      * )
      */
-    
     public function store(QuizSessionCreateFormRequest $request)
     {
-        $session = 0;
-
-        $findLastSession = QuizSession::where('class_schedule_id', $request['class_schedule_id'])->first();
-
-        // return  $findLastSession->session;
-
-        if($findLastSession){
-            $findLastSession->end = true;
-            $findLastSession->save();
-            $session = $findLastSession->session ?  $findLastSession->session : 0;
-        }
-
-    	$model = new QuizSession;
-        $model->session = $session + 1;
-        $model->class_schedule_id = $request['class_schedule_id'];
-        $model->save();
-
-        return $this->showOne($model, 201);
+        return $this->showOne($this->service->register($request));
     }
 }

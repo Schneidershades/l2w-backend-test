@@ -51,8 +51,6 @@ class UserController extends Controller
 
         $model->save();
 
-        $model->assignRole($request->type);
-
         if(!$token = auth()->attempt($request->only(['email', 'password']))){
             return $this->errorResponse('unauthenticated', 401);
         }

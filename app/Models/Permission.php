@@ -15,14 +15,26 @@ class Permission extends SpatiePermissions
 	public static function defaultPermissions()
 	{
 	    return [
-	        'create_classSchedule',
-	        'edit_classSchedule',
-	        'show_classSchedule',
-	        'delete_classSchedule',
+	        'take_quiz',
+	        'show_quiz',
+	        'edit_quiz',
+	        'show_quiz',
+	        'delete_quiz',
 
-	        'show_myQuizStudentQuiz',
+	        'show_score',
+	        'edit_score',
+	        'show_score',
+	        'delete_score',
 
-	        'show_AllQuizStudentQuiz',
+	        'show_user',
+	        'edit_user',
+	        'show_user',
+	        'delete_user',
+
+	        'show_role',
+	        'edit_role',
+	        'show_role',
+	        'delete_role',
 	    ];
-	}		
+	}
 }

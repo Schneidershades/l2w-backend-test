@@ -10,7 +10,7 @@ class UserObserver
     {
         $user->password = bcrypt($user->password);
     }
-    
+
     /**
      * Handle the User "created" event.
      *
@@ -19,7 +19,7 @@ class UserObserver
      */
     public function created(User $user)
     {
-        //
+        $user->assignRole($user->role);
     }
 
     /**
