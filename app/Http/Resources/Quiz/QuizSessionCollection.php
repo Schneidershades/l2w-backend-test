@@ -14,6 +14,8 @@ class QuizSessionCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'data' => QuizSessionResource::collection($this->collection),
+        ];
     }
 }

@@ -43,7 +43,6 @@ class QuizController extends Controller
      *      ),
      * )
      */
-   
     public function store(QuizCreateFormRequest $request)
     {
     	$quiz = Quiz::where('class_schedule_id', $request['class_schedule_id'])->get();
@@ -84,8 +83,12 @@ class QuizController extends Controller
     		$result[] = $this->fillArray($r['id'], $r['attempts']);
 		}
 
+        $noDuplicates = array_unique($result);
+
+        $duplicates = array_diff($result, $noDuplicates);
+
 		$ns = array_reduce($result, 'array_merge', array());
-		
+
 		$random = $ns[mt_rand(0, count($ns) - 1)];
 
 		$quiz = Quiz::where('id', $random)->get();

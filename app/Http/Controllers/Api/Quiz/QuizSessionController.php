@@ -45,7 +45,7 @@ class QuizSessionController extends Controller
     {
         $session = 0;
 
-        $findLastSession = QuizSession::where('class_schedule_id', $request->class_schedule_id)
+        $findLastSession = QuizSession::where('class_schedule_id', $request['class_schedule_id'])
             ->where('end', false)->first();
 
         if($findLastSession){

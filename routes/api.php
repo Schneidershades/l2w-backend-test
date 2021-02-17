@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('v1')->group(function () {       
-	
+Route::prefix('v1')->group(function () {
     Route::group(['prefix' => 'user', 'namespace' => 'Api\User'], function(){
 		Route::post('register', 'UserController@register');
     	Route::post('login', 'UserController@login');
@@ -17,7 +16,6 @@ Route::prefix('v1')->group(function () {
     	Route::post('question', 'QuizController@store');
     	Route::post('start', 'QuizSessionController@store');
 	});
-	
 	Route::get('/class', 'Api\Schedule\ClassScheduleController@index');
 });
 

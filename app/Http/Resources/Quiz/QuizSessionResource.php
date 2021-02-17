@@ -14,6 +14,10 @@ class QuizSessionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'session' => $this->session,
+            'class_schedule_id' => $this->class_schedule_id,
+        ];
     }
 }

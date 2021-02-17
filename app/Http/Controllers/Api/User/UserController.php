@@ -46,7 +46,7 @@ class UserController extends Controller
     public function register(UserRegistrationFormRequest $request)
     {
         $model = new User;
-        
+
         $this->requestAndDbIntersection($request, $model, []);
 
         $model->save();
