@@ -10,7 +10,8 @@ class QuizSessionService
     {
     	$session = 0;
 
-        $findLastSession = QuizSession::where('class_schedule_id', $request['class_schedule_id'])->first();
+        $findLastSession = QuizSession::where('class_schedule_id', $request['class_schedule_id'])->
+            where('user_id', auth()->user()->id)->first();
 
         if($findLastSession){
             $findLastSession->end = true;
@@ -20,6 +21,7 @@ class QuizSessionService
 
     	$model = new QuizSession;
         $model->session = $session + 1;
+        $model->user_id = auth()->user()->id;
         $model->class_schedule_id = $request['class_schedule_id'];
         $model->save();
 

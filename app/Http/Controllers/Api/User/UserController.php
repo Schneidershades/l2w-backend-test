@@ -133,7 +133,7 @@ class UserController extends Controller
     * )
     */
     public function update(UserUpdateFormRequest $request, $id){
-                                                                    
+
         $model = User::find(auth()->user()->id);
 
         $this->requestAndDbIntersection($request, $model, []);

@@ -11,11 +11,15 @@ Route::prefix('v1')->group(function () {
         Route::put('update', 'UserController@update');
 	});
 
+    Route::get('/class', 'Api\Schedule\ClassScheduleController@index');
+
 	Route::group(['prefix' => 'quiz', 'namespace' => 'Api\Quiz'], function(){
 		Route::post('answer', 'QuizAnswerController@store');
     	Route::post('question', 'QuizController@store');
     	Route::post('start', 'QuizSessionController@store');
 	});
-	Route::get('/class', 'Api\Schedule\ClassScheduleController@index');
+    // Route::group(['middleware' => ['permission:publish articles|edit articles']], function () {
+    //     //
+    // });
 });
 

@@ -13,6 +13,7 @@ class QuizController extends Controller
     public function __construct(QuizAnswerService $service)
     {
         $this->service = $service;
+        $this->middleware(['auth:api', 'permission:take_quiz']);
     }
 	/**
      * @OA\Post(
