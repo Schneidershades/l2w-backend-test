@@ -106,7 +106,7 @@ class UserRegistrationFormRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'type' => 'required|string|max:255|in:instructor,student',
+            'role' => 'required|string|max:255|in:Instructor,Student',
         ];
     }
 }
