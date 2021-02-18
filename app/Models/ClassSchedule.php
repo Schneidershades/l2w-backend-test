@@ -10,7 +10,7 @@ use App\Http\Resources\Schedule\ClassScheduleCollection;
 class ClassSchedule extends Model
 {
     use HasFactory;
-    
+
     public $oneItem = ClassScheduleResource::class;
     public $allItems = ClassScheduleCollection::class;
 }

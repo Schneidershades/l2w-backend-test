@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 use App\Models\Role;
 use App\Models\Permission;
 
@@ -37,7 +38,7 @@ class PermissionSeeder extends Seeder
 
                 $role = Role::Create(['name' => trim($role)]);
 
-                if( $role->name == 'Super Admin' ) {
+                if( $role->name == 'Admin' ) {
                     $role->syncPermissions(Permission::all());
                     $this->command->info('Super Admin granted all the permissions');
                 }
@@ -48,7 +49,7 @@ class PermissionSeeder extends Seeder
                 }
 
                 if($role->name == 'Instructor'){
-                    $role->givePermissionTo(['show_quiz', 'edit_quiz', 'create_quiz', 'show_quizScore']);
+                    $role->givePermissionTo(['show_quiz', 'edit_quiz', 'create_quiz', 'show_score']);
                     $this->command->info('Instructor granted permissions');
                 }
                 // create one user for each role
@@ -64,11 +65,17 @@ class PermissionSeeder extends Seeder
     }
     private function createUser($role)
     {
-        if( $role->name == 'Super Admin') {
-            $super = User::where('email', 'buskoms@yahoo.com')->first();
-            $super->assignRole($role->name);
+        if( $role->name == 'Admin') {
+            $user = User::Create([
+                'first_name'                   => 'Schneider',
+                'last_name'                     => 'Komolafe',
+                'email'                         => 'buskoms@yahoo.com',
+                'password'                      => 'password',
+                'role'                          => $role->name,
+            ]);
+            $user->assignRole($role->name);
             $this->command->info('Here is your admin details to login:');
-            $this->command->warn($super->email);
+            $this->command->warn($user->email);
             $this->command->warn('Password is "password"');
         }
     }

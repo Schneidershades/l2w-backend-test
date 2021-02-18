@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            'type' => $this->type,
+            'role' => $this->role,
             'permissions' => $this->getPermissionsViaRoles()->pluck('name')->map(function($permission){
                 return explode('_', $permission);
             })->toArray(),
