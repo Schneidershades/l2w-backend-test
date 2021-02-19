@@ -450,11 +450,11 @@
                         "type": "string",
                         "example": "Busayo"
                     },
-                    "type": {
-                        "title": "User Type",
-                        "description": "Student/Instructor",
+                    "role": {
+                        "title": "User Role",
+                        "description": "student/instructor",
                         "type": "string",
-                        "example": "Student/Instructor"
+                        "example": "student/instructor"
                     },
                     "email": {
                         "title": "User email",

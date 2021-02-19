@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Quiz;
 
-use App\Services\QuizAnswerService;
+use App\Services\QuizService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Quiz\QuizCreateFormRequest;
 
@@ -10,7 +10,7 @@ class QuizController extends Controller
 {
     private $service;
 
-    public function __construct(QuizAnswerService $service)
+    public function __construct(QuizService $service)
     {
         $this->service = $service;
         $this->middleware(['auth:api', 'permission:take_quiz']);

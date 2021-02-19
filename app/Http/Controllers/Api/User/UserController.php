@@ -209,6 +209,6 @@ class UserController extends Controller
     * )
     */
     public function profile(){
-        return $this->showOne(auth()->user());
+        return $this->showOne(auth()->user(), 201);
     }
 }

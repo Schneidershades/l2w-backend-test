@@ -18,8 +18,5 @@ Route::prefix('v1')->group(function () {
     	Route::post('question', 'QuizController@store');
     	Route::post('start', 'QuizSessionController@store');
 	});
-    // Route::group(['middleware' => ['permission:publish articles|edit articles']], function () {
-    //     //
-    // });
 });
 

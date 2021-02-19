@@ -24,4 +24,9 @@ class Quiz extends Model
     {
     	return $this->hasMany(MultipleChoice::class);
     }
+
+    public function correctAnswer()
+    {
+        return $this->hasOne(MultipleChoice::class)->where('correct', true);
+    }
 }

@@ -51,14 +51,14 @@ class UserRegistrationFormRequest extends FormRequest
 
     /**
      * @OA\Property(
-     *      title="User Type",
+     *      title="User Role",
      *      description="student/instructor",
      *      example="student/instructor"
      * )
      *
      * @var string
      */
-    public $type;
+    public $role;
 
     /**
      * @OA\Property(

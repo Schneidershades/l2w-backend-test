@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Quiz;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Quiz\MultipleChoiceResource;
 
 class QuizResource extends JsonResource
 {
@@ -18,6 +19,7 @@ class QuizResource extends JsonResource
             'id' => $this->id,
             'question' => $this->question,
             'session' => $this->session,
+            'correctAnswer' => new MultipleChoiceResource($this->correctAnswer),
             'options' => MultipleChoiceResource::collection($this->multipleChoices)
         ];
     }

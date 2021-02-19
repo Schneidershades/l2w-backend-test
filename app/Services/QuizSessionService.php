@@ -11,7 +11,7 @@ class QuizSessionService
     	$session = 0;
 
         $findLastSession = QuizSession::where('class_schedule_id', $request['class_schedule_id'])->
-            where('user_id', auth()->user()->id)->first();
+            where('user_id', auth()->user()->id)->where('end', false)->first();
 
         if($findLastSession){
             $findLastSession->end = true;
