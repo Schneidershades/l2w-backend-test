@@ -13,36 +13,6 @@ class SM2Controller extends Controller
 {
     public function index()
     {
-    	// ($sm2 = new SM2());
-
-
-		// $sm2->getNumberRepetitions(10);
-		// $sm2->processRecallResult(4);
-
-		// dd(
-		// 	$sm2->getRepetitionInterval(), 
-		// 	$sm2->getEasinessFactor(),
-		// 	$sm2->getNumberRepetitions(), 
-		// 	$sm2->getLastStudied(),
-		// 	$sm2->getNextRepetition()
-		// );
-
-
-		// getRepetitionInterval()
- 		// getNextRepetition()
-  		// getEasinessFactor()
-  		// getNumberRepetitions()
-  		// getLastStudied()
-    
-
-		// 
-		// setEasinessFactor($easinessFactor);
-		// setNumberRepetitions($numberRepetitions);
-		// setRepetitionInterval($repetitionInterval);
-		// setNextRepetition($nextRepetition);
-		// setLastStudied($lastStudied);
-		// processRecallResult($qualityOfRecall);
-		
 		$quiz = Quiz::inRandomOrder()->get();
 		$quizNumber = Quiz::pluck('id');
 
@@ -58,7 +28,6 @@ class SM2Controller extends Controller
     		];
 
     		$quizRequest[] = $rate;
-
     	}
 
 		$answeredQuestions = QuizAnswer::whereIn('quiz_id', $quizNumber)->get();
@@ -81,7 +50,7 @@ class SM2Controller extends Controller
 		}
 
 		$ns = array_reduce($result, 'array_merge', array());
-		
+
 		$random = $ns[mt_rand(0, count($ns) - 1)];
 
 		$quiz = Quiz::where('id', $random)->get();

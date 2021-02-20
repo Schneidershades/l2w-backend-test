@@ -49,6 +49,9 @@ class QuizController extends Controller
      */
     public function store(QuizCreateFormRequest $request)
     {
-    	return $this->showOne($this->service->register($request));
+        if ($this->service->register($request) == null){
+            return $this->showMessage(false);
+        }
+        return $this->showOne($this->service->register($request));
     }
 }

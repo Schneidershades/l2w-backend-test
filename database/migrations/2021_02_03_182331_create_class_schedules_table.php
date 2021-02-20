@@ -24,7 +24,7 @@ class CreateClassSchedulesTable extends Migration
             $table->boolean('satisfactory')->default(false);
             $table->boolean('comment')->default(false);
             $table->string('status')->default('open');
-            $table->integer('user_id')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

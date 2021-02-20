@@ -15,8 +15,8 @@ class CreateQuizSessionsTable extends Migration
     {
         Schema::create('quiz_sessions', function (Blueprint $table) {
             $table->id();
-            $table->integer('class_schedule_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->foreignId('class_schedule_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('session')->default(0);
             $table->integer('scores')->default(0);
             $table->boolean('end')->default(false);

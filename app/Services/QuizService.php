@@ -29,13 +29,15 @@ class QuizService
 
     	}
 
-		$answeredQuestions = QuizAnswer::whereIn('quiz_id', $quizNumber)->get();
+		$answeredQuestions = QuizAnswer::whereIn('quiz_id', $quizNumber)
+								->where('correct', '<' , 5)
+								->get();
 
 		$quizAnswerRequest = $answeredQuestions->keyBy('quiz_id')->map(function($item){
 			return $item->attempts;
 		});
 
-		$fish = collect($quizRequest)->map(function($item) use ($quizAnswerRequest){
+		$join = collect($quizRequest)->map(function($item) use ($quizAnswerRequest){
 			if($quizAnswerRequest->keys()->contains($item['id'])){
 				$item['attempts'] = $item['attempts'] + $quizAnswerRequest->get($item['id']);
 			}
@@ -43,15 +45,32 @@ class QuizService
 		});
 
 
-    	foreach ($fish as $r) {
+    	foreach ($join as $r) {
     		$result[] = $this->fillArray($r['id'], $r['attempts']);
 		}
 
-        // $noDuplicates = array_unique($result);
-
-        // $duplicates = array_diff($result, $noDuplicates);
-
 		$ns = array_reduce($result, 'array_merge', array());
+
+		$recheckQst = QuizAnswer::whereIn('quiz_id', $ns)
+								->where('correct', '>=' , 5)
+								->get();
+
+		if($recheckQst->count() == $quiz->count()){
+			$aboveFiveCorrectAnswers = QuizAnswer::whereIn('quiz_id', $quizNumber)
+								->where('correct', '>=' , 5)
+								->get();
+			$correct = $aboveFiveCorrectAnswers->sum('correct');
+			$failed = $aboveFiveCorrectAnswers->sum('fail');
+			$total = $correct +  $failed;
+
+			$percentage = $correct/$total * 100;
+
+			$findLastSession = QuizSession::where('id', $request['quiz_session_id'])->first();
+			$findLastSession->scores = $percentage;
+			$findLastSession->save();
+
+			return null;
+		}
 
 		$random = $ns[mt_rand(0, count($ns) - 1)];
 

@@ -28,8 +28,9 @@ class QuizAnswerService
         $quiz->quiz_id = $request['quiz_id'];
         $quiz->quiz_session_id = $request['quiz_session_id'];
         $quiz->session = $quizSession->session;
-        $quiz->correct = $choice->correct == true ? $quiz->correct + 1 : $quiz->fail + 1;
-		$quiz->attempts = $choice->correct == true ? $selectedQuiz->attempts - 1 : $selectedQuiz->attempts + 1;
+        $quiz->correct = $choice->correct == 1 ? $quiz->correct + 1 : $quiz->correct + 0;
+        $quiz->fail = $choice->correct != 1 ? $quiz->fail + 1 : $quiz->fail + 0;
+		$quiz->attempts = $choice->correct == 1 ? $selectedQuiz->attempts-1 : $selectedQuiz->attempts++;
 		$quiz->save();
     }
 }
