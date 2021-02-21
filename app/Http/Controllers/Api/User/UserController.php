@@ -132,7 +132,7 @@ class UserController extends Controller
     *      security={ {"bearerAuth": {}} },
     * )
     */
-    public function update(UserUpdateFormRequest $request, $id){
+    public function updateUser(UserUpdateFormRequest $request){
 
         $model = User::find(auth()->user()->id);
 

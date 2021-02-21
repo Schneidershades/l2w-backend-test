@@ -14,8 +14,8 @@ class CreateQuizzesTable extends Migration
     public function up()
     {
         Schema::create('quizzes', function (Blueprint $table) {
-            $table->id()
-            $table->foreignId('class_schedule_id')->constrained()->onDelete('cascade');
+            $table->id();
+            $table->foreignId('class_schedule_id')->nullable()->constrained();
             $table->string('question')->nullable();
             $table->integer('attempts')->default(2);
             $table->timestamps();

@@ -15,7 +15,7 @@ class CreateMultipleChoicesTable extends Migration
     {
         Schema::create('multiple_choices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
+            $table->foreignId('quiz_id')->nullable()->constrained();
             $table->string('option')->nullable();
             $table->boolean('correct')->default(false);
             $table->timestamps();

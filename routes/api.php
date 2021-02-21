@@ -8,10 +8,9 @@ Route::prefix('v1')->group(function () {
     	Route::post('login', 'UserController@login');
     	Route::post('logout', 'UserController@logout');
         Route::get('profile', 'UserController@profile');
-        Route::put('update', 'UserController@update');
+        Route::post('update', 'UserController@updateUser');
 	});
 
-    Route::get('/class', 'Api\Schedule\ClassScheduleController@index');
     Route::get('/class', 'Api\Schedule\ClassScheduleController@index');
 
 	Route::group(['prefix' => 'quiz', 'namespace' => 'Api\Quiz'], function(){

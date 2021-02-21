@@ -62,13 +62,14 @@ class QuizService
 			$correct = $aboveFiveCorrectAnswers->sum('correct');
 			$failed = $aboveFiveCorrectAnswers->sum('fail');
 			$total = $correct +  $failed;
+			if($correct != 0 ||$total != 0){
+				$percentage = $correct/$total * 100;
 
-			$percentage = $correct/$total * 100;
-
-			$findLastSession = QuizSession::where('id', $request['quiz_session_id'])->first();
-			$findLastSession->scores = $percentage;
-			$findLastSession->save();
-
+				$findLastSession = QuizSession::where('id', $request['quiz_session_id'])->first();
+				$findLastSession->scores = $percentage;
+				$findLastSession->save();
+			}
+			
 			return null;
 		}
 

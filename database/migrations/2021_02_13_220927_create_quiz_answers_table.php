@@ -15,8 +15,8 @@ class CreateQuizAnswersTable extends Migration
     {
         Schema::create('quiz_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quiz_id')->constrained()->onDelete('cascade');
-            $table->foreignId('quiz_session_id')->constrained()->onDelete('cascade');
+            $table->foreignId('quiz_id')->nullable()->constrained();
+            $table->foreignId('quiz_session_id')->nullable()->constrained('quiz_sessions');
             $table->integer('duration')->nullable();
             $table->integer('timer')->nullable();
             $table->integer('points')->nullable();
